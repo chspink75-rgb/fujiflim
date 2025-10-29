@@ -1,0 +1,332 @@
+/* RESET 및 기본 스타일은 이전과 동일합니다. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Pretendard', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    word-break: keep-all;
+}
+p{margin-bottom: 80px;}
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+ul, li {
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    vertical-align: top;
+    height: auto;
+}
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.section {
+    padding: 120px 0;
+    text-align: center;
+}
+.section-title {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+
+.dark-bg {
+    background-color: #333;
+    color: #fff;
+}
+.light-bg {
+    background-color: #f7f7f7;
+}
+.white-text {
+    color: #fff;
+}
+/* ... (Common Text/Button Styles 유지) ... */
+
+/* -------------------------------------------------------------------------- */
+/* HEADER & NAV - 이전과 동일하게 유지 */
+/* -------------------------------------------------------------------------- */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff; 
+    border-bottom: 1px solid #eee;
+}
+.header-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img {
+    height: 20px; 
+}
+#gnb {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+.main-menu {
+    display: flex;
+    gap: 85px;
+}
+.main-menu > li {
+    position: relative;
+    padding: 10px 0;
+}
+.main-menu > li > a {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+}
+.util-menu a {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+/* Sub Menu Hover Effect - 가로 나열 구현 */
+.sub-menu-bg {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0; /* JS로 제어할 초기 높이 */
+    background-color: #f7f7f7;
+    transition: height 0.4s ease-out;
+    overflow: hidden;
+    z-index: 990;
+    border-top: 1px solid #eee;
+}
+.sub-menu-container {
+    display: flex; 
+    justify-content: center; /* 전체 서브메뉴 그룹을 중앙에 배치 */
+    padding: 30px 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-out 0.1s; /* 배경 높이 변화 후 나타나도록 딜레이 */
+    width: 100%;
+}
+.sub-menu {
+    width: 150px; /* 각 메뉴 컬럼의 너비 */
+    padding: 0 20px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+.sub-menu:last-child {
+    border-right: none;
+}
+.sub-menu li a {
+    display: block;
+    padding: 5px 0;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
+.sub-menu li a:hover {
+    color: #0099e5;
+}
+
+/* -------------------------------------------------------------------------- */
+/* MAIN VISUAL (SWIPER) - 수정된 부분 */
+/* -------------------------------------------------------------------------- */
+#main-visual {
+    height: 700px;
+    margin-top: 50px; 
+}
+.main-swiper {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* !!!!!!!! 여기서 배경 이미지를 설정합니다. !!!!!!!! */
+}
+.slide1 {
+    /* 원본 이미지와 유사한 배경 이미지 URL로 변경하세요 */
+    background-image: url(../images/xt5.jpg); /* 다크그린 배경에 텍스트 */
+    /* 원본 이미지의 포크 및 플레이트 디자인을 CSS로 직접 구현하기는 복잡하므로, 배경 이미지로 처리하거나
+       필요하다면 HTML에 별도의 이미지 요소를 추가해야 합니다.
+       여기서는 placeholder를 사용했으며, 실제 이미지로 교체하세요. */
+}
+.slide2 {
+    background-image: url(../images/elephant.jpg); /* 다크그레이 배경에 텍스트 */
+}
+
+.main-swiper .text-area {
+    /* 배경 이미지 위에 텍스트가 잘 보이도록 패딩이나 마진 조정 */
+    padding-top: 0; /* 이미지가 배경으로 들어가므로 상단 패딩 제거 */
+    position: relative; /* 텍스트가 z-index를 가질 수 있도록 */
+    z-index: 2; /* 배경 이미지 위에 텍스트가 보이도록 */
+    color: #fff; /* 텍스트 색상을 흰색으로 */
+    text-shadow: 0 0 10px rgba(0,0,0,0.5); /* 텍스트 가독성을 높임 */
+}
+.main-swiper .sub-title {
+    font-size: 16px;
+    font-weight: 300;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+.main-swiper .main-title {
+    font-size: 60px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 30px;
+}
+.btn-detail {
+    display: inline-block;
+    padding: 10px 40px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+.btn-detail:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* PRODUCTS Section 이하 모든 섹션 스타일은 이전과 동일합니다. */
+/* -------------------------------------------------------------------------- */
+/* ... (이전 CSS 코드와 동일하게 유지) ... */
+.product-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.product-item {
+    width: 300px;
+}
+.product-item img {
+    margin-bottom: 15px;
+}
+.product-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+.content-box {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+.content-box .image-area {
+    width: 50%;
+    overflow: hidden;
+}
+.content-box .text-area {
+    width: 50%;
+    padding: 20px 0;
+}
+.content-box .category {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #0099e5;
+}
+.content-box .description {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.8;
+}
+.right-text {
+    flex-direction: row-reverse;
+}
+#x100 .image-area {
+    filter: grayscale(100%);
+}
+#story .section-title {
+    margin-bottom: 50px;
+    text-align: left;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#story .section-title span {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+#story .story-content {
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 40px;
+}
+#story .image-area-small {
+    width: 450px;
+    height: 500px;
+    overflow: hidden;
+}
+#story .text-area {
+    text-align: left;
+    width: 450px;
+    padding-top: 30px;
+}
+#story .description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ccc;
+}
+#footer {
+    background-color: #222;
+    color: #aaa;
+    padding: 30px 0;
+    font-size: 14px;
+}
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+.footer-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+.social-links a {
+    font-size: 20px;
+    margin-left: 15px;
+}
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+.links a {
+    margin-right: 20px;
+}
+address {
+    font-style: normal;
+}
